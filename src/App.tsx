@@ -10,6 +10,7 @@ function App() {
     const [scroll, setScroll] = createSignal(false);
     const [tent, setTent] = createSignal(false);
     const [fairy, setFairy] = createSignal(false);
+    const [agris, setAgris] = createSignal(false);
 
     const [intervalId, setIntervalId] = createSignal<number | null>(null);
     const [isGrinding, setIsGrinding] = createSignal(false);
@@ -113,6 +114,10 @@ function App() {
             <div class="flex gap-4 items-center w-full justify-between">
                 <label for="fairy">🧚 Fairy items (elixirs)</label>
                 <input name="fairy" type="checkbox" checked={fairy()} onChange={(e) => setFairy(e.currentTarget.checked)} class="checkbox" />
+            </div>
+            <div class="flex gap-4 items-center w-full justify-between">
+                <label for="agris">🌱 Agris (optional)</label>
+                <input name="agris" type="checkbox" checked={agris()} onChange={(e) => setAgris(e.currentTarget.checked)} class="checkbox" />
             </div>
 
             <button disabled={disabled() || isGrinding() || countdown() !== null} class="btn" onClick={start}> Start Grind </button>
