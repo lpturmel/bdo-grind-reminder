@@ -7,7 +7,7 @@
     },
     "package": {
         "productName": "Grind Reminder",
-        "version": "0.0.0"
+        "version": "1.0.1"
     },
     "tauri": {
         "allowlist": {
@@ -21,7 +21,7 @@
             {
                 "title": "Grind Reminder",
                 "width": 600,
-                "height": 600,
+                "height": 700,
                 "resizable": false
             }
         ],

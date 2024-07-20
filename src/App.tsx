@@ -10,14 +10,16 @@ function App() {
     const [scroll, setScroll] = createSignal(false);
     const [tent, setTent] = createSignal(false);
     const [fairy, setFairy] = createSignal(false);
-    const [agris, setAgris] = createSignal(false);
+    const [lightstone, setLightstone] = createSignal(false);
+    const [crystals, setCrystals] = createSignal(false);
+    const [horse, setHorse] = createSignal(false);
 
     const [intervalId, setIntervalId] = createSignal<number | null>(null);
     const [isGrinding, setIsGrinding] = createSignal(false);
     const [countdown, setCountdown] = createSignal<number | null>(null);
 
 
-    const disabled = createMemo(() => !alchemyStone() || !food() || !church() || !scroll() || !tent() || !fairy());
+    const disabled = createMemo(() => !horse() || !crystals() || !lightstone() || !alchemyStone() || !food() || !church() || !scroll() || !tent() || !fairy());
 
     const start = () => {
         setIsGrinding(true);
@@ -63,12 +65,27 @@ function App() {
         setIsGrinding(false);
         setCountdown(null);
         setIntervalId(null);
+
+        setHorse(false);
+        setCrystals(false);
+        setLightstone(false);
         setAlchemyStone(false);
         setFood(false);
         setChurch(false);
         setScroll(false);
         setTent(false);
         setFairy(false);
+    }
+    const checkAll = () => {
+        setHorse(true);
+        setCrystals(true);
+        setLightstone(true);
+        setAlchemyStone(true);
+        setFood(true);
+        setChurch(true);
+        setScroll(true);
+        setTent(true);
+        setFairy(true);
     }
 
     createEffect(() => {
@@ -89,10 +106,21 @@ function App() {
 
     return (
         <div class="container mx-auto max-w-lg flex flex-col gap-4 pt-16 p-4 h-full">
-            <h1 class="text-3xl font-bold">Grind Reminder</h1>
+            <div class="flex items-center justify-between">
+                <h1 class="text-3xl font-bold">Grind Reminder</h1>
+                <button class="btn btn-neutral btn-sm" onClick={checkAll}>Check all</button>
+            </div>
 
             <div class="flex gap-4 items-center w-full justify-between">
-                <label for="alchemyStone">💎 Alchemy Stone</label>
+                <label for="lightstone">🔵 Lightstone</label>
+                <input name="lightstone" type="checkbox" checked={lightstone()} onChange={(e) => setLightstone(e.currentTarget.checked)} class="checkbox" />
+            </div>
+            <div class="flex gap-4 items-center w-full justify-between">
+                <label for="crystals">💎 Crystal Page</label>
+                <input name="crystals" type="checkbox" checked={crystals()} onChange={(e) => setCrystals(e.currentTarget.checked)} class="checkbox" />
+            </div>
+            <div class="flex gap-4 items-center w-full justify-between">
+                <label for="alchemyStone">🪨 Alchemy Stone</label>
                 <input name="alchemyStone" type="checkbox" checked={alchemyStone()} onChange={(e) => setAlchemyStone(e.currentTarget.checked)} class="checkbox" />
             </div>
             <div class="flex gap-4 items-center w-full justify-between">
@@ -116,8 +144,11 @@ function App() {
                 <input name="fairy" type="checkbox" checked={fairy()} onChange={(e) => setFairy(e.currentTarget.checked)} class="checkbox" />
             </div>
             <div class="flex gap-4 items-center w-full justify-between">
+                <label for="horse">🐎 Horse buff (wind)</label>
+                <input name="horse" type="checkbox" checked={horse()} onChange={(e) => setHorse(e.currentTarget.checked)} class="checkbox" />
+            </div>
+            <div class="flex gap-4 items-center w-full justify-between">
                 <label for="agris">🌱 Agris (optional)</label>
-                <input name="agris" type="checkbox" checked={agris()} onChange={(e) => setAgris(e.currentTarget.checked)} class="checkbox" />
             </div>
 
             <button disabled={disabled() || isGrinding() || countdown() !== null} class="btn" onClick={start}> Start Grind </button>
