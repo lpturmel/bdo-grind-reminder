@@ -1,11 +1,13 @@
 import { CgClose } from "solid-icons/cg";
-import { Component, createSignal } from "solid-js";
+import { Component, createResource, createSignal } from "solid-js";
 import AudioSlider from "../components/AudioSlider";
 import { IoSettingsSharp } from "solid-icons/io";
 import { store } from "..";
 import { SOUND_KEY_BIND_KEY } from "../utils";
+import { getVersion } from "@tauri-apps/api/app";
 
 const CreateServer: Component = () => {
+    const [version] = createResource(getVersion);
     let dialogRef: HTMLDialogElement;
     const [keyBind, setKeyBind] = createSignal("Ctrl + P");
 
@@ -45,7 +47,10 @@ const CreateServer: Component = () => {
                     <form method="dialog">
                         <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"><CgClose class="w-5 h-5" /></button>
                     </form>
-                    <h3 class="font-bold text-lg pb-4">Settings</h3>
+                    <div class="w-full flex justify-between items-center">
+                        <h3 class="font-bold text-lg pb-4">Settings</h3>
+                        <p class="font-semibold text-sm pr-10">v{version()}</p>
+                    </div>
                     <div class="flex flex-col gap-4 items-start">
                         <div class="flex flex-col gap-4 items-start justify-center">
                             <h3 class="uppercase font-semibold text-sm">Sound</h3>
