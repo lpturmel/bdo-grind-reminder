@@ -1,1 +1,269 @@
-[]
+[
+    {
+        "name": "Crypt of Resting Thoughts",
+        "is_agris": false,
+        "zone": "o'dyllita",
+        "monster_tags": [
+            "marni"
+        ]
+    },
+    {
+        "name": "Olun's Valley",
+        "is_agris": false,
+        "zone": "o'dyllita",
+        "monster_tags": [
+            "party 3",
+            "agris",
+            "caphras"
+        ]
+    },
+    {
+        "name": "Olun's Valley [Dehkia]",
+        "is_agris": false,
+        "zone": "o'dyllita",
+        "monster_tags": [
+            "party 3",
+            "caphras",
+            "dehkia"
+        ]
+    },
+    {
+        "name": "Thornwood Forest",
+        "is_agris": false,
+        "zone": "o'dyllita",
+        "monster_tags": [
+            "specter's energy",
+            "caphras",
+            "marni"
+        ]
+    },
+    {
+        "name": "Thornwood Forest [Dehkia]",
+        "is_agris": false,
+        "zone": "o'dyllita",
+        "monster_tags": [
+            "caphras",
+            "dehkia"
+        ]
+    },
+    {
+        "name": "Tunkuta [Dehkia]",
+        "is_agris": false,
+        "zone": "o'dyllita",
+        "monster_tags": [
+            "party 2",
+            "dehkia"
+        ]
+    },
+    {
+        "name": "Blood Wolf Settlement",
+        "is_agris": false,
+        "zone": "drieghan",
+        "monster_tags": [
+            "treasure",
+            "marni"
+        ]
+    },
+    {
+        "name": "Sherekhan Necropolis (Day)",
+        "is_agris": false,
+        "zone": "drieghan",
+        "monster_tags": [
+            "specter's energy",
+            "skillexp",
+            "treasure",
+            "marni"
+        ]
+    },
+    {
+        "name": "Sherekhan Necropolis (Night)",
+        "is_agris": false,
+        "zone": "drieghan",
+        "monster_tags": [
+            "specter's energy",
+            "skillexp",
+            "treasure"
+        ]
+    },
+    {
+        "name": "Gyfin Rhasia Temple (Underground)",
+        "is_agris": false,
+        "zone": "kamasylvia",
+        "monster_tags": [
+            "exp",
+            "caphras",
+            "marni"
+        ]
+    },
+    {
+        "name": "Ash Forest",
+        "is_agris": false,
+        "zone": "kamasylvia",
+        "monster_tags": [
+            "marni"
+        ]
+    },
+    {
+        "name": "Ash Forest [Dehkia]",
+        "is_agris": false,
+        "zone": "kamasylvia",
+        "monster_tags": [
+            "marni",
+            "dehkia"
+        ]
+    },
+    {
+        "name": "Altar Imps [Elvia]",
+        "is_agris": false,
+        "zone": "serendia",
+        "monster_tags": [
+            "elvia",
+            "marni",
+            "party 2"
+        ]
+    },
+    {
+        "name": "Bloody Monastery [Elvia]",
+        "is_agris": false,
+        "zone": "serendia",
+        "monster_tags": [
+            "elvia",
+            "marni"
+        ]
+    },
+    {
+        "name": "Castle Ruins [Elvia]",
+        "is_agris": false,
+        "zone": "serendia",
+        "monster_tags": [
+            "elvia",
+            "party 3"
+        ]
+    },
+    {
+        "name": "Orc Camp [Elvia]",
+        "is_agris": false,
+        "zone": "serendia",
+        "monster_tags": [
+            "elvia",
+            "marni"
+        ]
+    },
+    {
+        "name": "Swamp Fogan [Elvia]",
+        "is_agris": false,
+        "zone": "serendia",
+        "monster_tags": [
+            "elvia",
+            "marni"
+        ]
+    },
+    {
+        "name": "Swamp Naga [Elvia]",
+        "is_agris": false,
+        "zone": "serendia",
+        "monster_tags": [
+            "elvia",
+            "marni"
+        ]
+    },
+    {
+        "name": "Biraghi Den [Elvia]",
+        "is_agris": false,
+        "zone": "serendia",
+        "monster_tags": [
+            "elvia",
+            "marni"
+        ]
+    },
+    {
+        "name": "Kratuga",
+        "is_agris": true,
+        "zone": "mediah",
+        "monster_tags": [
+            "artifacts",
+            "marni"
+        ]
+    },
+    {
+        "name": "Hexe Sanctuary [Elvia]",
+        "is_agris": false,
+        "zone": "calpheon",
+        "monster_tags": [
+            "elvia",
+            "marni"
+        ]
+    },
+    {
+        "name": "Primal Giant Post [Elvia]",
+        "is_agris": false,
+        "zone": "calpheon",
+        "monster_tags": [
+            "elvia",
+            "marni"
+        ]
+    },
+    {
+        "name": "Quint Hill [Elvia]",
+        "is_agris": false,
+        "zone": "calpheon",
+        "monster_tags": [
+            "elvia",
+            "marni"
+        ]
+    },
+    {
+        "name": "Rhutum Outstation [Elvia]",
+        "is_agris": false,
+        "zone": "calpheon",
+        "monster_tags": [
+            "elvia",
+            "marni"
+        ]
+    },
+    {
+        "name": "Saunil Camp [Elvia]",
+        "is_agris": false,
+        "zone": "calpheon",
+        "monster_tags": [
+            "elvia",
+            "marni"
+        ]
+    },
+    {
+        "name": "Aakman Temple [Dehkia]",
+        "is_agris": false,
+        "zone": "valencia",
+        "monster_tags": [
+            "dehkia",
+            "treasure"
+        ]
+    },
+    {
+        "name": "Hystria Ruins [Dehkia]",
+        "is_agris": false,
+        "zone": "valencia",
+        "monster_tags": [
+            "dehkia",
+            "treasure"
+        ]
+    },
+    {
+        "name": "Pila Ku Jail [Dehkia]",
+        "is_agris": false,
+        "zone": "valencia",
+        "monster_tags": [
+            "dehkia",
+            "treasure"
+        ]
+    },
+    {
+        "name": "Round Sulfur Mine [Dehkia]",
+        "is_agris": false,
+        "zone": "valencia",
+        "monster_tags": [
+            "dehkia",
+            "treasure"
+        ]
+    }
+]

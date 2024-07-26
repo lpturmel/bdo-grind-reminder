@@ -1,9 +1,25 @@
-import { Show, createEffect, createMemo, createSignal, onCleanup } from "solid-js";
+import { For, Show, createEffect, createMemo, createResource, createSignal, onCleanup } from "solid-js";
+import { playSound } from "./components/AudioSlider";
+import { invoke } from "@tauri-apps/api";
+import SettingsModal from "./modals/SettingsModal";
 
-const completionSound = new Audio("/completion.mp3");
-const START_TIMER = 3600;
+const START_TIMER = import.meta.env.PROD ? 3600 : 5;
 
+export const [selectedGrindSpot, setSelectedGrindSpot] = createSignal<string | null>(null);
+
+export interface GrindSpot {
+    name: string;
+    is_agris: boolean;
+    monster_tags: string[];
+}
 function App() {
+    const [grindSpots] = createResource(async () => {
+        const grindSpots = await invoke<GrindSpot[]>("load_grind_spots");
+        return grindSpots;
+    });
+    const grindSpotDetails = createMemo(() =>
+        grindSpots()?.find((grindSpot) => grindSpot.name === selectedGrindSpot())
+    );
     const [alchemyStone, setAlchemyStone] = createSignal(false);
     const [food, setFood] = createSignal(false);
     const [church, setChurch] = createSignal(false);
@@ -89,9 +105,10 @@ function App() {
     }
 
     createEffect(() => {
+        console.log(grindSpotDetails());
         if (isGrinding() && countdown() === 0) {
             pause();
-            completionSound.play();
+            playSound();
             setTimeout(() => {
                 reset();
             }, 3000);
@@ -104,11 +121,37 @@ function App() {
         }
     });
 
+    const handleSelect = (e: InputEvent) => {
+        setSelectedGrindSpot((e.target as HTMLSelectElement).value);
+    }
+
     return (
         <div class="container mx-auto max-w-lg flex flex-col gap-4 pt-16 p-4 h-full">
             <div class="flex items-center justify-between">
-                <h1 class="text-3xl font-bold">Grind Reminder</h1>
-                <button class="btn btn-neutral btn-sm" onClick={checkAll}>Check all</button>
+                <h1 class="text-xl font-bold">Grind Reminder</h1>
+                <div class="flex gap-4 items-center">
+                    <button class="btn btn-neutral btn-sm" onClick={checkAll}>Check all</button>
+                    <SettingsModal />
+                </div>
+            </div>
+            <div class="flex flex-col gap-4 w-full">
+                <select onInput={handleSelect} class="select select-bordered">
+                    <option disabled selected>Pick a Grind Spot</option>
+                    <For each={grindSpots()!}>
+                        {(grindSpot) => (
+                            <option value={grindSpot.name}>{grindSpot.name}</option>
+                        )}
+                    </For>
+                </select>
+                <Show when={grindSpotDetails()}>
+                    <div class="flex gap-2">
+                        <For each={grindSpotDetails()!.monster_tags}>
+                            {(monsterTag) => (
+                                <div class="badge badge-neutral">{monsterTag}</div>
+                            )}
+                        </For>
+                    </div>
+                </Show>
             </div>
 
             <div class="flex gap-4 items-center w-full justify-between">
@@ -147,9 +190,11 @@ function App() {
                 <label for="horse">🐎 Horse buff (wind)</label>
                 <input name="horse" type="checkbox" checked={horse()} onChange={(e) => setHorse(e.currentTarget.checked)} class="checkbox" />
             </div>
-            <div class="flex gap-4 items-center w-full justify-between">
-                <label for="agris">🌱 Agris (optional)</label>
-            </div>
+            <Show when={grindSpotDetails()?.is_agris}>
+                <div class="flex gap-4 items-center w-full justify-between">
+                    <label for="agris">🌱 Agris</label>
+                </div>
+            </Show>
 
             <button disabled={disabled() || isGrinding() || countdown() !== null} class="btn" onClick={start}> Start Grind </button>
 
