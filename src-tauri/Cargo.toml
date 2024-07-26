@@ -1,6 +1,6 @@
 [package]
 name = "bdo-tracker"
-version = "1.0.2"
+version = "1.0.3"
 description = "Black Desert Online Grind Buff Reminder"
 authors = ["Louis-Philippe Turmel"]
 edition = "2021"
